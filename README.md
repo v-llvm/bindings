@@ -21,7 +21,7 @@ This is a list of [the llvm-c modules](https://llvm.org/doxygen/group__LLVMC.htm
 * [ ] [Bit Reader](https://llvm.org/doxygen/group__LLVMCBitReader.html)
 * [ ] [Bit Writer](https://llvm.org/doxygen/group__LLVMCBitWriter.html)
 * [ ] [Transforms](https://llvm.org/doxygen/group__LLVMCTransforms.html)
-* [x] [Core](https://llvm.org/doxygen/group__LLVMCCore.html))
+* [x] [Core](https://llvm.org/doxygen/group__LLVMCCore.html)
 * [ ] [Instruction Builders](https://llvm.org/doxygen/group__LLVMCCoreInstructionBuilder.html)
 * [ ] [Module Providers](https://llvm.org/doxygen/group__LLVMCCoreModuleProvider.html)
 * [ ] [Memory Buffers](https://llvm.org/doxygen/group__LLVMCCoreMemoryBuffers.html)
