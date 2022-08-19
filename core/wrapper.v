@@ -3169,9 +3169,14 @@ pub fn llvm_build_phi(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeR
 	return C.LLVMBuildPhi(llvm_builder_ref_, ty, name.str)
 }
 
+fn C.LLVMBuildCall(llvm_builder_ref_ types.LLVMBuilderRef, fn_ types.LLVMValueRef, args &types.LLVMValueRef, num_args u32, name &i8) types.LLVMValueRef
+pub fn llvm_build_call(llvm_builder_ref_ types.LLVMBuilderRef, fn_ types.LLVMValueRef, args []types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildCall(llvm_builder_ref_, fn_, args.data, args.len, name.str)
+}
+
 fn C.LLVMBuildCall2(llvm_builder_ref_ types.LLVMBuilderRef, llvm_type_ref_ types.LLVMTypeRef, fn_ types.LLVMValueRef, args &types.LLVMValueRef, num_args u32, name &i8) types.LLVMValueRef
-pub fn llvm_build_call2(llvm_builder_ref_ types.LLVMBuilderRef, llvm_type_ref_ types.LLVMTypeRef, fn_ types.LLVMValueRef, args &types.LLVMValueRef, num_args u32, name string) types.LLVMValueRef {
-	return C.LLVMBuildCall2(llvm_builder_ref_, llvm_type_ref_, fn_, args, num_args, name.str)
+pub fn llvm_build_call2(llvm_builder_ref_ types.LLVMBuilderRef, llvm_type_ref_ types.LLVMTypeRef, fn_ types.LLVMValueRef, args []types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildCall2(llvm_builder_ref_, llvm_type_ref_, fn_, args.data, args.len, name.str)
 }
 
 fn C.LLVMBuildSelect(llvm_builder_ref_ types.LLVMBuilderRef, if_ types.LLVMValueRef, then types.LLVMValueRef, else_ types.LLVMValueRef, name &i8) types.LLVMValueRef
