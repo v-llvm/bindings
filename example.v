@@ -1,6 +1,6 @@
 module main
 
-import llvm.core
+import core
 
 fn main() {
 	the_context := core.llvm_context_create()

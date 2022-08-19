@@ -7,7 +7,7 @@ module types
 #flag -D__STDC_LIMIT_MACROS
 #flag -L/usr/lib/
 #flag -lLLVM
-#include "llvm-c/Types.h"
+#include <llvm-c/Types.h>
 
 struct LLVMOpaqueMemoryBuffer{}
 struct LLVMOpaqueContext{}
