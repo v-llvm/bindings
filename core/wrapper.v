@@ -2239,28 +2239,28 @@ pub fn llvm_append_existing_basic_block(fn_ types.LLVMValueRef, bb types.LLVMBas
 }
 
 fn C.LLVMCreateBasicBlockInContext(c types.LLVMContextRef, name &i8) types.LLVMBasicBlockRef
-pub fn llvm_create_basic_block_in_context(c types.LLVMContextRef, name &i8) types.LLVMBasicBlockRef {
-	return C.LLVMCreateBasicBlockInContext(c, name)
+pub fn llvm_create_basic_block_in_context(c types.LLVMContextRef, name string) types.LLVMBasicBlockRef {
+	return C.LLVMCreateBasicBlockInContext(c, name.str)
 }
 
 fn C.LLVMAppendBasicBlockInContext(c types.LLVMContextRef, fn_ types.LLVMValueRef, name &i8) types.LLVMBasicBlockRef
-pub fn llvm_append_basic_block_in_context(c types.LLVMContextRef, fn_ types.LLVMValueRef, name &i8) types.LLVMBasicBlockRef {
-	return C.LLVMAppendBasicBlockInContext(c, fn_, name)
+pub fn llvm_append_basic_block_in_context(c types.LLVMContextRef, fn_ types.LLVMValueRef, name string) types.LLVMBasicBlockRef {
+	return C.LLVMAppendBasicBlockInContext(c, fn_, name.str)
 }
 
 fn C.LLVMAppendBasicBlock(fn_ types.LLVMValueRef, name &i8) types.LLVMBasicBlockRef
-pub fn llvm_append_basic_block(fn_ types.LLVMValueRef, name &i8) types.LLVMBasicBlockRef {
-	return C.LLVMAppendBasicBlock(fn_, name)
+pub fn llvm_append_basic_block(fn_ types.LLVMValueRef, name string) types.LLVMBasicBlockRef {
+	return C.LLVMAppendBasicBlock(fn_, name.str)
 }
 
 fn C.LLVMInsertBasicBlockInContext(c types.LLVMContextRef, bb types.LLVMBasicBlockRef, name &i8) types.LLVMBasicBlockRef
-pub fn llvm_insert_basic_block_in_context(c types.LLVMContextRef, bb types.LLVMBasicBlockRef, name &i8) types.LLVMBasicBlockRef {
-	return C.LLVMInsertBasicBlockInContext(c, bb, name)
+pub fn llvm_insert_basic_block_in_context(c types.LLVMContextRef, bb types.LLVMBasicBlockRef, name string) types.LLVMBasicBlockRef {
+	return C.LLVMInsertBasicBlockInContext(c, bb, name.str)
 }
 
 fn C.LLVMInsertBasicBlock(insert_beforebb types.LLVMBasicBlockRef, name &i8) types.LLVMBasicBlockRef
-pub fn llvm_insert_basic_block(insert_beforebb types.LLVMBasicBlockRef, name &i8) types.LLVMBasicBlockRef {
-	return C.LLVMInsertBasicBlock(insert_beforebb, name)
+pub fn llvm_insert_basic_block(insert_beforebb types.LLVMBasicBlockRef, name string) types.LLVMBasicBlockRef {
+	return C.LLVMInsertBasicBlock(insert_beforebb, name.str)
 }
 
 fn C.LLVMDeleteBasicBlock(bb types.LLVMBasicBlockRef)
