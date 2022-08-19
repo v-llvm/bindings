@@ -2974,6 +2974,11 @@ pub fn llvm_build_free(llvm_builder_ref_ types.LLVMBuilderRef, pointer_val types
 	return C.LLVMBuildFree(llvm_builder_ref_, pointer_val)
 }
 
+fn C.LLVMBuildLoad(llvm_builder_ref_ types.LLVMBuilderRef, pointer_val types.LLVMValueRef, name &i8) types.LLVMValueRef
+pub fn llvm_build_load(llvm_builder_ref_ types.LLVMBuilderRef, pointer_val types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildLoad(llvm_builder_ref_, pointer_val, name.str)
+}
+
 fn C.LLVMBuildLoad2(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer_val types.LLVMValueRef, name &i8) types.LLVMValueRef
 pub fn llvm_build_load2(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer_val types.LLVMValueRef, name string) types.LLVMValueRef {
 	return C.LLVMBuildLoad2(llvm_builder_ref_, ty, pointer_val, name.str)
