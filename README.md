@@ -1,4 +1,4 @@
-# V LLVM Bindings _(v-llvm.bindings)_
+# V LLVM Bindings _(v_llvm.bindings)_
 
 LLVM bindings for the V programming language
 
@@ -51,7 +51,7 @@ Using this module requires knowledge of [LLVM](https://llvm.org). This example p
 ```v
 module main
 
-import llvm.core
+import v_llvm.bindings.core
 
 fn main() {
 	the_context := core.llvm_context_create()
