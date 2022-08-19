@@ -468,8 +468,8 @@ pub fn llvm_is_type_attribute(a types.LLVMAttributeRef) types.LLVMBool {
 }
 
 fn C.LLVMGetTypeByName2(c types.LLVMContextRef, name &i8) types.LLVMTypeRef
-pub fn llvm_get_type_by_name2(c types.LLVMContextRef, name &i8) types.LLVMTypeRef {
-	return C.LLVMGetTypeByName2(c, name)
+pub fn llvm_get_type_by_name2(c types.LLVMContextRef, name string) types.LLVMTypeRef {
+	return C.LLVMGetTypeByName2(c, name.str)
 }
 
 fn C.LLVMModuleCreateWithName(moduleid &i8) types.LLVMModuleRef
@@ -614,8 +614,8 @@ pub fn llvm_get_module_context(m types.LLVMModuleRef) types.LLVMContextRef {
 }
 
 fn C.LLVMGetTypeByName(m types.LLVMModuleRef, name &i8) types.LLVMTypeRef
-pub fn llvm_get_type_by_name(m types.LLVMModuleRef, name &i8) types.LLVMTypeRef {
-	return C.LLVMGetTypeByName(m, name)
+pub fn llvm_get_type_by_name(m types.LLVMModuleRef, name string) types.LLVMTypeRef {
+	return C.LLVMGetTypeByName(m, name.str)
 }
 
 fn C.LLVMGetFirstNamedMetadata(m types.LLVMModuleRef) types.LLVMNamedMDNodeRef
@@ -654,8 +654,8 @@ pub fn llvm_get_named_metadata_name(namedmd types.LLVMNamedMDNodeRef, name_len &
 }
 
 fn C.LLVMGetNamedMetadataNumOperands(m types.LLVMModuleRef, name &i8) u32
-pub fn llvm_get_named_metadata_num_operands(m types.LLVMModuleRef, name &i8) u32 {
-	return C.LLVMGetNamedMetadataNumOperands(m, name)
+pub fn llvm_get_named_metadata_num_operands(m types.LLVMModuleRef, name string) u32 {
+	return C.LLVMGetNamedMetadataNumOperands(m, name.str)
 }
 
 fn C.LLVMGetNamedMetadataOperands(m types.LLVMModuleRef, name &i8, dest &types.LLVMValueRef)
@@ -1144,8 +1144,8 @@ pub fn llvm_get_value_name(val types.LLVMValueRef) string {
 }
 
 fn C.LLVMSetValueName(val types.LLVMValueRef, name &i8)
-pub fn llvm_set_value_name(val types.LLVMValueRef, name &i8) {
-	C.LLVMSetValueName(val, name)
+pub fn llvm_set_value_name(val types.LLVMValueRef, name string) {
+	C.LLVMSetValueName(val, name.str)
 }
 
 fn C.LLVMGetFirstUse(val types.LLVMValueRef) types.LLVMUseRef
@@ -1764,8 +1764,8 @@ pub fn llvm_value_metadata_entries_get_metadata(entries &types.LLVMValueMetadata
 }
 
 fn C.LLVMAddGlobal(m types.LLVMModuleRef, ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_add_global(m types.LLVMModuleRef, ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMAddGlobal(m, ty, name)
+pub fn llvm_add_global(m types.LLVMModuleRef, ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMAddGlobal(m, ty, name.str)
 }
 
 fn C.LLVMAddGlobalInAddressSpace(m types.LLVMModuleRef, ty types.LLVMTypeRef, name &i8, address_space u32) types.LLVMValueRef
@@ -1774,8 +1774,8 @@ pub fn llvm_add_global_in_address_space(m types.LLVMModuleRef, ty types.LLVMType
 }
 
 fn C.LLVMGetNamedGlobal(m types.LLVMModuleRef, name &i8) types.LLVMValueRef
-pub fn llvm_get_named_global(m types.LLVMModuleRef, name &i8) types.LLVMValueRef {
-	return C.LLVMGetNamedGlobal(m, name)
+pub fn llvm_get_named_global(m types.LLVMModuleRef, name string) types.LLVMValueRef {
+	return C.LLVMGetNamedGlobal(m, name.str)
 }
 
 fn C.LLVMGetFirstGlobal(m types.LLVMModuleRef) types.LLVMValueRef
@@ -1854,8 +1854,8 @@ pub fn llvm_set_externally_initialized(global_var types.LLVMValueRef, is_ext_ini
 }
 
 fn C.LLVMAddAlias2(m types.LLVMModuleRef, value_ty types.LLVMTypeRef, addr_space u32, aliasee types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_add_alias2(m types.LLVMModuleRef, value_ty types.LLVMTypeRef, addr_space u32, aliasee types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMAddAlias2(m, value_ty, addr_space, aliasee, name)
+pub fn llvm_add_alias2(m types.LLVMModuleRef, value_ty types.LLVMTypeRef, addr_space u32, aliasee types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMAddAlias2(m, value_ty, addr_space, aliasee, name.str)
 }
 
 fn C.LLVMGetNamedGlobalAlias(m types.LLVMModuleRef, name &i8, name_len usize) types.LLVMValueRef
@@ -1969,8 +1969,8 @@ pub fn llvm_getgc(fn_ types.LLVMValueRef) string {
 }
 
 fn C.LLVMSetGC(fn_ types.LLVMValueRef, name &i8)
-pub fn llvm_setgc(fn_ types.LLVMValueRef, name &i8) {
-	C.LLVMSetGC(fn_, name)
+pub fn llvm_setgc(fn_ types.LLVMValueRef, name string) {
+	C.LLVMSetGC(fn_, name.str)
 }
 
 fn C.LLVMAddAttributeAtIndex(f types.LLVMValueRef, idx LLVMAttributeIndex, a types.LLVMAttributeRef)
@@ -2584,8 +2584,8 @@ pub fn llvm_insert_into_builder(builder types.LLVMBuilderRef, instr types.LLVMVa
 }
 
 fn C.LLVMInsertIntoBuilderWithName(builder types.LLVMBuilderRef, instr types.LLVMValueRef, name &i8)
-pub fn llvm_insert_into_builder_with_name(builder types.LLVMBuilderRef, instr types.LLVMValueRef, name &i8) {
-	C.LLVMInsertIntoBuilderWithName(builder, instr, name)
+pub fn llvm_insert_into_builder_with_name(builder types.LLVMBuilderRef, instr types.LLVMValueRef, name string) {
+	C.LLVMInsertIntoBuilderWithName(builder, instr, name.str)
 }
 
 fn C.LLVMDisposeBuilder(builder types.LLVMBuilderRef)
@@ -2669,9 +2669,9 @@ pub fn llvm_build_indirect_br(b types.LLVMBuilderRef, addr types.LLVMValueRef, n
 }
 
 fn C.LLVMBuildInvoke2(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, fn_ types.LLVMValueRef, args &types.LLVMValueRef, num_args u32, then types.LLVMBasicBlockRef, catch types.LLVMBasicBlockRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_invoke2(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, fn_ types.LLVMValueRef, args &types.LLVMValueRef, num_args u32, then types.LLVMBasicBlockRef, catch types.LLVMBasicBlockRef, name &i8) types.LLVMValueRef {
+pub fn llvm_build_invoke2(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, fn_ types.LLVMValueRef, args &types.LLVMValueRef, num_args u32, then types.LLVMBasicBlockRef, catch types.LLVMBasicBlockRef, name string) types.LLVMValueRef {
 	return C.LLVMBuildInvoke2(llvm_builder_ref_, ty, fn_, args, num_args, then, catch,
-		name)
+		name.str)
 }
 
 fn C.LLVMBuildUnreachable(llvm_builder_ref_ types.LLVMBuilderRef) types.LLVMValueRef
@@ -2685,8 +2685,8 @@ pub fn llvm_build_resume(b types.LLVMBuilderRef, exn types.LLVMValueRef) types.L
 }
 
 fn C.LLVMBuildLandingPad(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pers_fn types.LLVMValueRef, num_clauses u32, name &i8) types.LLVMValueRef
-pub fn llvm_build_landing_pad(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pers_fn types.LLVMValueRef, num_clauses u32, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildLandingPad(b, ty, pers_fn, num_clauses, name)
+pub fn llvm_build_landing_pad(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pers_fn types.LLVMValueRef, num_clauses u32, name string) types.LLVMValueRef {
+	return C.LLVMBuildLandingPad(b, ty, pers_fn, num_clauses, name.str)
 }
 
 fn C.LLVMBuildCleanupRet(b types.LLVMBuilderRef, catch_pad types.LLVMValueRef, bb types.LLVMBasicBlockRef) types.LLVMValueRef
@@ -2700,18 +2700,18 @@ pub fn llvm_build_catch_ret(b types.LLVMBuilderRef, catch_pad types.LLVMValueRef
 }
 
 fn C.LLVMBuildCatchPad(b types.LLVMBuilderRef, parent_pad types.LLVMValueRef, args &types.LLVMValueRef, num_args u32, name &i8) types.LLVMValueRef
-pub fn llvm_build_catch_pad(b types.LLVMBuilderRef, parent_pad types.LLVMValueRef, args &types.LLVMValueRef, num_args u32, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildCatchPad(b, parent_pad, args, num_args, name)
+pub fn llvm_build_catch_pad(b types.LLVMBuilderRef, parent_pad types.LLVMValueRef, args &types.LLVMValueRef, num_args u32, name string) types.LLVMValueRef {
+	return C.LLVMBuildCatchPad(b, parent_pad, args, num_args, name.str)
 }
 
 fn C.LLVMBuildCleanupPad(b types.LLVMBuilderRef, parent_pad types.LLVMValueRef, args &types.LLVMValueRef, num_args u32, name &i8) types.LLVMValueRef
-pub fn llvm_build_cleanup_pad(b types.LLVMBuilderRef, parent_pad types.LLVMValueRef, args &types.LLVMValueRef, num_args u32, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildCleanupPad(b, parent_pad, args, num_args, name)
+pub fn llvm_build_cleanup_pad(b types.LLVMBuilderRef, parent_pad types.LLVMValueRef, args &types.LLVMValueRef, num_args u32, name string) types.LLVMValueRef {
+	return C.LLVMBuildCleanupPad(b, parent_pad, args, num_args, name.str)
 }
 
 fn C.LLVMBuildCatchSwitch(b types.LLVMBuilderRef, parent_pad types.LLVMValueRef, unwindbb types.LLVMBasicBlockRef, num_handlers u32, name &i8) types.LLVMValueRef
-pub fn llvm_build_catch_switch(b types.LLVMBuilderRef, parent_pad types.LLVMValueRef, unwindbb types.LLVMBasicBlockRef, num_handlers u32, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildCatchSwitch(b, parent_pad, unwindbb, num_handlers, name)
+pub fn llvm_build_catch_switch(b types.LLVMBuilderRef, parent_pad types.LLVMValueRef, unwindbb types.LLVMBasicBlockRef, num_handlers u32, name string) types.LLVMValueRef {
+	return C.LLVMBuildCatchSwitch(b, parent_pad, unwindbb, num_handlers, name.str)
 }
 
 fn C.LLVMAddCase(switch types.LLVMValueRef, on_val types.LLVMValueRef, dest types.LLVMBasicBlockRef)
@@ -2785,173 +2785,173 @@ pub fn llvm_set_parent_catch_switch(catch_pad types.LLVMValueRef, catch_switch t
 }
 
 fn C.LLVMBuildAdd(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_add(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildAdd(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_build_add(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildAdd(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildNSWAdd(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildnsw_add(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildNSWAdd(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_buildnsw_add(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildNSWAdd(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildNUWAdd(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildnuw_add(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildNUWAdd(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_buildnuw_add(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildNUWAdd(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildFAdd(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildf_add(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildFAdd(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_buildf_add(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildFAdd(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildSub(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_sub(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildSub(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_build_sub(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildSub(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildNSWSub(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildnsw_sub(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildNSWSub(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_buildnsw_sub(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildNSWSub(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildNUWSub(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildnuw_sub(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildNUWSub(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_buildnuw_sub(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildNUWSub(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildFSub(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildf_sub(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildFSub(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_buildf_sub(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildFSub(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildMul(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_mul(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildMul(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_build_mul(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildMul(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildNSWMul(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildnsw_mul(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildNSWMul(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_buildnsw_mul(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildNSWMul(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildNUWMul(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildnuw_mul(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildNUWMul(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_buildnuw_mul(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildNUWMul(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildFMul(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildf_mul(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildFMul(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_buildf_mul(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildFMul(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildUDiv(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildu_div(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildUDiv(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_buildu_div(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildUDiv(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildExactUDiv(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_exactu_div(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildExactUDiv(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_build_exactu_div(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildExactUDiv(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildSDiv(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_builds_div(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildSDiv(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_builds_div(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildSDiv(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildExactSDiv(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_exacts_div(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildExactSDiv(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_build_exacts_div(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildExactSDiv(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildFDiv(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildf_div(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildFDiv(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_buildf_div(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildFDiv(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildURem(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildu_rem(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildURem(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_buildu_rem(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildURem(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildSRem(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_builds_rem(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildSRem(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_builds_rem(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildSRem(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildFRem(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildf_rem(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildFRem(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_buildf_rem(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildFRem(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildShl(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_shl(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildShl(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_build_shl(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildShl(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildLShr(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildl_shr(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildLShr(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_buildl_shr(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildLShr(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildAShr(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_builda_shr(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildAShr(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_builda_shr(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildAShr(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildAnd(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_and(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildAnd(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_build_and(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildAnd(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildOr(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_or(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildOr(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_build_or(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildOr(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildXor(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_xor(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildXor(llvm_builder_ref_, lhs, rhs, name)
+pub fn llvm_build_xor(llvm_builder_ref_ types.LLVMBuilderRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildXor(llvm_builder_ref_, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildBinOp(b types.LLVMBuilderRef, op LLVMOpcode, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_bin_op(b types.LLVMBuilderRef, op LLVMOpcode, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildBinOp(b, op, lhs, rhs, name)
+pub fn llvm_build_bin_op(b types.LLVMBuilderRef, op LLVMOpcode, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildBinOp(b, op, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildNeg(llvm_builder_ref_ types.LLVMBuilderRef, v types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_neg(llvm_builder_ref_ types.LLVMBuilderRef, v types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildNeg(llvm_builder_ref_, v, name)
+pub fn llvm_build_neg(llvm_builder_ref_ types.LLVMBuilderRef, v types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildNeg(llvm_builder_ref_, v, name.str)
 }
 
 fn C.LLVMBuildNSWNeg(b types.LLVMBuilderRef, v types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildnsw_neg(b types.LLVMBuilderRef, v types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildNSWNeg(b, v, name)
+pub fn llvm_buildnsw_neg(b types.LLVMBuilderRef, v types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildNSWNeg(b, v, name.str)
 }
 
 fn C.LLVMBuildNUWNeg(b types.LLVMBuilderRef, v types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildnuw_neg(b types.LLVMBuilderRef, v types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildNUWNeg(b, v, name)
+pub fn llvm_buildnuw_neg(b types.LLVMBuilderRef, v types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildNUWNeg(b, v, name.str)
 }
 
 fn C.LLVMBuildFNeg(llvm_builder_ref_ types.LLVMBuilderRef, v types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildf_neg(llvm_builder_ref_ types.LLVMBuilderRef, v types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildFNeg(llvm_builder_ref_, v, name)
+pub fn llvm_buildf_neg(llvm_builder_ref_ types.LLVMBuilderRef, v types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildFNeg(llvm_builder_ref_, v, name.str)
 }
 
 fn C.LLVMBuildNot(llvm_builder_ref_ types.LLVMBuilderRef, v types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_not(llvm_builder_ref_ types.LLVMBuilderRef, v types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildNot(llvm_builder_ref_, v, name)
+pub fn llvm_build_not(llvm_builder_ref_ types.LLVMBuilderRef, v types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildNot(llvm_builder_ref_, v, name.str)
 }
 
 fn C.LLVMBuildMalloc(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_malloc(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildMalloc(llvm_builder_ref_, ty, name)
+pub fn llvm_build_malloc(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildMalloc(llvm_builder_ref_, ty, name.str)
 }
 
 fn C.LLVMBuildArrayMalloc(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, val types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_array_malloc(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, val types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildArrayMalloc(llvm_builder_ref_, ty, val, name)
+pub fn llvm_build_array_malloc(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, val types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildArrayMalloc(llvm_builder_ref_, ty, val, name.str)
 }
 
 fn C.LLVMBuildMemSet(b types.LLVMBuilderRef, ptr types.LLVMValueRef, val types.LLVMValueRef, len types.LLVMValueRef, align u32) types.LLVMValueRef
@@ -2970,13 +2970,13 @@ pub fn llvm_build_mem_move(b types.LLVMBuilderRef, dst types.LLVMValueRef, dst_a
 }
 
 fn C.LLVMBuildAlloca(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_alloca(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildAlloca(llvm_builder_ref_, ty, name)
+pub fn llvm_build_alloca(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildAlloca(llvm_builder_ref_, ty, name.str)
 }
 
 fn C.LLVMBuildArrayAlloca(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, val types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_array_alloca(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, val types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildArrayAlloca(llvm_builder_ref_, ty, val, name)
+pub fn llvm_build_array_alloca(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, val types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildArrayAlloca(llvm_builder_ref_, ty, val, name.str)
 }
 
 fn C.LLVMBuildFree(llvm_builder_ref_ types.LLVMBuilderRef, pointer_val types.LLVMValueRef) types.LLVMValueRef
@@ -2985,8 +2985,8 @@ pub fn llvm_build_free(llvm_builder_ref_ types.LLVMBuilderRef, pointer_val types
 }
 
 fn C.LLVMBuildLoad2(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer_val types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_load2(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer_val types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildLoad2(llvm_builder_ref_, ty, pointer_val, name)
+pub fn llvm_build_load2(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer_val types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildLoad2(llvm_builder_ref_, ty, pointer_val, name.str)
 }
 
 fn C.LLVMBuildStore(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, ptr types.LLVMValueRef) types.LLVMValueRef
@@ -2995,28 +2995,28 @@ pub fn llvm_build_store(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMVa
 }
 
 fn C.LLVMBuildGEP2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, indices &types.LLVMValueRef, num_indices u32, name &i8) types.LLVMValueRef
-pub fn llvm_buildge_p2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, indices &types.LLVMValueRef, num_indices u32, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildGEP2(b, ty, pointer, indices, num_indices, name)
+pub fn llvm_buildge_p2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, indices &types.LLVMValueRef, num_indices u32, name string) types.LLVMValueRef {
+	return C.LLVMBuildGEP2(b, ty, pointer, indices, num_indices, name.str)
 }
 
 fn C.LLVMBuildInBoundsGEP2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, indices &types.LLVMValueRef, num_indices u32, name &i8) types.LLVMValueRef
-pub fn llvm_build_in_boundsge_p2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, indices &types.LLVMValueRef, num_indices u32, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildInBoundsGEP2(b, ty, pointer, indices, num_indices, name)
+pub fn llvm_build_in_boundsge_p2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, indices &types.LLVMValueRef, num_indices u32, name string) types.LLVMValueRef {
+	return C.LLVMBuildInBoundsGEP2(b, ty, pointer, indices, num_indices, name.str)
 }
 
 fn C.LLVMBuildStructGEP2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, idx u32, name &i8) types.LLVMValueRef
-pub fn llvm_build_structge_p2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, idx u32, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildStructGEP2(b, ty, pointer, idx, name)
+pub fn llvm_build_structge_p2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, idx u32, name string) types.LLVMValueRef {
+	return C.LLVMBuildStructGEP2(b, ty, pointer, idx, name.str)
 }
 
 fn C.LLVMBuildGlobalString(b types.LLVMBuilderRef, str &i8, name &i8) types.LLVMValueRef
-pub fn llvm_build_global_string(b types.LLVMBuilderRef, str &i8, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildGlobalString(b, str, name)
+pub fn llvm_build_global_string(b types.LLVMBuilderRef, str string, name string) types.LLVMValueRef {
+	return C.LLVMBuildGlobalString(b, str.str, name.str)
 }
 
 fn C.LLVMBuildGlobalStringPtr(b types.LLVMBuilderRef, str &i8, name &i8) types.LLVMValueRef
-pub fn llvm_build_global_string_ptr(b types.LLVMBuilderRef, str &i8, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildGlobalStringPtr(b, str, name)
+pub fn llvm_build_global_string_ptr(b types.LLVMBuilderRef, str string, name string) types.LLVMValueRef {
+	return C.LLVMBuildGlobalStringPtr(b, str.str, name.str)
 }
 
 fn C.LLVMGetVolatile(memory_access_inst types.LLVMValueRef) types.LLVMBool
@@ -3060,188 +3060,188 @@ pub fn llvm_set_atomicrmw_bin_op(atomicrmw_inst types.LLVMValueRef, bin_op LLVMA
 }
 
 fn C.LLVMBuildTrunc(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_trunc(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildTrunc(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_build_trunc(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildTrunc(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildZExt(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildz_ext(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildZExt(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_buildz_ext(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildZExt(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildSExt(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_builds_ext(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildSExt(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_builds_ext(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildSExt(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildFPToUI(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildfp_toui(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildFPToUI(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_buildfp_toui(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildFPToUI(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildFPToSI(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildfp_tosi(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildFPToSI(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_buildfp_tosi(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildFPToSI(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildUIToFP(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildui_tofp(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildUIToFP(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_buildui_tofp(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildUIToFP(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildSIToFP(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildsi_tofp(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildSIToFP(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_buildsi_tofp(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildSIToFP(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildFPTrunc(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildfp_trunc(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildFPTrunc(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_buildfp_trunc(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildFPTrunc(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildFPExt(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildfp_ext(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildFPExt(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_buildfp_ext(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildFPExt(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildPtrToInt(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_ptr_to_int(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildPtrToInt(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_build_ptr_to_int(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildPtrToInt(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildIntToPtr(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_int_to_ptr(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildIntToPtr(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_build_int_to_ptr(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildIntToPtr(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildBitCast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_bit_cast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildBitCast(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_build_bit_cast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildBitCast(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildAddrSpaceCast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_addr_space_cast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildAddrSpaceCast(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_build_addr_space_cast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildAddrSpaceCast(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildZExtOrBitCast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildz_ext_or_bit_cast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildZExtOrBitCast(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_buildz_ext_or_bit_cast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildZExtOrBitCast(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildSExtOrBitCast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_builds_ext_or_bit_cast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildSExtOrBitCast(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_builds_ext_or_bit_cast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildSExtOrBitCast(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildTruncOrBitCast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_trunc_or_bit_cast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildTruncOrBitCast(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_build_trunc_or_bit_cast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildTruncOrBitCast(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildCast(b types.LLVMBuilderRef, op LLVMOpcode, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_cast(b types.LLVMBuilderRef, op LLVMOpcode, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildCast(b, op, val, dest_ty, name)
+pub fn llvm_build_cast(b types.LLVMBuilderRef, op LLVMOpcode, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildCast(b, op, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildPointerCast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_pointer_cast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildPointerCast(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_build_pointer_cast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildPointerCast(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildIntCast2(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, is_signed types.LLVMBool, name &i8) types.LLVMValueRef
-pub fn llvm_build_int_cast2(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, is_signed types.LLVMBool, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildIntCast2(llvm_builder_ref_, val, dest_ty, is_signed, name)
+pub fn llvm_build_int_cast2(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, is_signed types.LLVMBool, name string) types.LLVMValueRef {
+	return C.LLVMBuildIntCast2(llvm_builder_ref_, val, dest_ty, is_signed, name.str)
 }
 
 fn C.LLVMBuildFPCast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildfp_cast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildFPCast(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_buildfp_cast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildFPCast(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildIntCast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_int_cast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildIntCast(llvm_builder_ref_, val, dest_ty, name)
+pub fn llvm_build_int_cast(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, dest_ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildIntCast(llvm_builder_ref_, val, dest_ty, name.str)
 }
 
 fn C.LLVMBuildICmp(llvm_builder_ref_ types.LLVMBuilderRef, op LLVMIntPredicate, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildi_cmp(llvm_builder_ref_ types.LLVMBuilderRef, op LLVMIntPredicate, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildICmp(llvm_builder_ref_, op, lhs, rhs, name)
+pub fn llvm_buildi_cmp(llvm_builder_ref_ types.LLVMBuilderRef, op LLVMIntPredicate, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildICmp(llvm_builder_ref_, op, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildFCmp(llvm_builder_ref_ types.LLVMBuilderRef, op LLVMRealPredicate, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildf_cmp(llvm_builder_ref_ types.LLVMBuilderRef, op LLVMRealPredicate, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildFCmp(llvm_builder_ref_, op, lhs, rhs, name)
+pub fn llvm_buildf_cmp(llvm_builder_ref_ types.LLVMBuilderRef, op LLVMRealPredicate, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildFCmp(llvm_builder_ref_, op, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildPhi(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_phi(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildPhi(llvm_builder_ref_, ty, name)
+pub fn llvm_build_phi(llvm_builder_ref_ types.LLVMBuilderRef, ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildPhi(llvm_builder_ref_, ty, name.str)
 }
 
 fn C.LLVMBuildCall2(llvm_builder_ref_ types.LLVMBuilderRef, llvm_type_ref_ types.LLVMTypeRef, fn_ types.LLVMValueRef, args &types.LLVMValueRef, num_args u32, name &i8) types.LLVMValueRef
-pub fn llvm_build_call2(llvm_builder_ref_ types.LLVMBuilderRef, llvm_type_ref_ types.LLVMTypeRef, fn_ types.LLVMValueRef, args &types.LLVMValueRef, num_args u32, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildCall2(llvm_builder_ref_, llvm_type_ref_, fn_, args, num_args, name)
+pub fn llvm_build_call2(llvm_builder_ref_ types.LLVMBuilderRef, llvm_type_ref_ types.LLVMTypeRef, fn_ types.LLVMValueRef, args &types.LLVMValueRef, num_args u32, name string) types.LLVMValueRef {
+	return C.LLVMBuildCall2(llvm_builder_ref_, llvm_type_ref_, fn_, args, num_args, name.str)
 }
 
 fn C.LLVMBuildSelect(llvm_builder_ref_ types.LLVMBuilderRef, if_ types.LLVMValueRef, then types.LLVMValueRef, else_ types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_select(llvm_builder_ref_ types.LLVMBuilderRef, if_ types.LLVMValueRef, then types.LLVMValueRef, else_ types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildSelect(llvm_builder_ref_, if_, then, else_, name)
+pub fn llvm_build_select(llvm_builder_ref_ types.LLVMBuilderRef, if_ types.LLVMValueRef, then types.LLVMValueRef, else_ types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildSelect(llvm_builder_ref_, if_, then, else_, name.str)
 }
 
 fn C.LLVMBuildVAArg(llvm_builder_ref_ types.LLVMBuilderRef, list types.LLVMValueRef, ty types.LLVMTypeRef, name &i8) types.LLVMValueRef
-pub fn llvm_buildva_arg(llvm_builder_ref_ types.LLVMBuilderRef, list types.LLVMValueRef, ty types.LLVMTypeRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildVAArg(llvm_builder_ref_, list, ty, name)
+pub fn llvm_buildva_arg(llvm_builder_ref_ types.LLVMBuilderRef, list types.LLVMValueRef, ty types.LLVMTypeRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildVAArg(llvm_builder_ref_, list, ty, name.str)
 }
 
 fn C.LLVMBuildExtractElement(llvm_builder_ref_ types.LLVMBuilderRef, vec_val types.LLVMValueRef, index types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_extract_element(llvm_builder_ref_ types.LLVMBuilderRef, vec_val types.LLVMValueRef, index types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildExtractElement(llvm_builder_ref_, vec_val, index, name)
+pub fn llvm_build_extract_element(llvm_builder_ref_ types.LLVMBuilderRef, vec_val types.LLVMValueRef, index types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildExtractElement(llvm_builder_ref_, vec_val, index, name.str)
 }
 
 fn C.LLVMBuildInsertElement(llvm_builder_ref_ types.LLVMBuilderRef, vec_val types.LLVMValueRef, elt_val types.LLVMValueRef, index types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_insert_element(llvm_builder_ref_ types.LLVMBuilderRef, vec_val types.LLVMValueRef, elt_val types.LLVMValueRef, index types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildInsertElement(llvm_builder_ref_, vec_val, elt_val, index, name)
+pub fn llvm_build_insert_element(llvm_builder_ref_ types.LLVMBuilderRef, vec_val types.LLVMValueRef, elt_val types.LLVMValueRef, index types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildInsertElement(llvm_builder_ref_, vec_val, elt_val, index, name.str)
 }
 
 fn C.LLVMBuildShuffleVector(llvm_builder_ref_ types.LLVMBuilderRef, v1 types.LLVMValueRef, v2 types.LLVMValueRef, mask types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_shuffle_vector(llvm_builder_ref_ types.LLVMBuilderRef, v1 types.LLVMValueRef, v2 types.LLVMValueRef, mask types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildShuffleVector(llvm_builder_ref_, v1, v2, mask, name)
+pub fn llvm_build_shuffle_vector(llvm_builder_ref_ types.LLVMBuilderRef, v1 types.LLVMValueRef, v2 types.LLVMValueRef, mask types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildShuffleVector(llvm_builder_ref_, v1, v2, mask, name.str)
 }
 
 fn C.LLVMBuildExtractValue(llvm_builder_ref_ types.LLVMBuilderRef, agg_val types.LLVMValueRef, index u32, name &i8) types.LLVMValueRef
-pub fn llvm_build_extract_value(llvm_builder_ref_ types.LLVMBuilderRef, agg_val types.LLVMValueRef, index u32, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildExtractValue(llvm_builder_ref_, agg_val, index, name)
+pub fn llvm_build_extract_value(llvm_builder_ref_ types.LLVMBuilderRef, agg_val types.LLVMValueRef, index u32, name string) types.LLVMValueRef {
+	return C.LLVMBuildExtractValue(llvm_builder_ref_, agg_val, index, name.str)
 }
 
 fn C.LLVMBuildInsertValue(llvm_builder_ref_ types.LLVMBuilderRef, agg_val types.LLVMValueRef, elt_val types.LLVMValueRef, index u32, name &i8) types.LLVMValueRef
-pub fn llvm_build_insert_value(llvm_builder_ref_ types.LLVMBuilderRef, agg_val types.LLVMValueRef, elt_val types.LLVMValueRef, index u32, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildInsertValue(llvm_builder_ref_, agg_val, elt_val, index, name)
+pub fn llvm_build_insert_value(llvm_builder_ref_ types.LLVMBuilderRef, agg_val types.LLVMValueRef, elt_val types.LLVMValueRef, index u32, name string) types.LLVMValueRef {
+	return C.LLVMBuildInsertValue(llvm_builder_ref_, agg_val, elt_val, index, name.str)
 }
 
 fn C.LLVMBuildFreeze(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_freeze(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildFreeze(llvm_builder_ref_, val, name)
+pub fn llvm_build_freeze(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildFreeze(llvm_builder_ref_, val, name.str)
 }
 
 fn C.LLVMBuildIsNull(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_is_null(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildIsNull(llvm_builder_ref_, val, name)
+pub fn llvm_build_is_null(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildIsNull(llvm_builder_ref_, val, name.str)
 }
 
 fn C.LLVMBuildIsNotNull(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_is_not_null(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildIsNotNull(llvm_builder_ref_, val, name)
+pub fn llvm_build_is_not_null(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildIsNotNull(llvm_builder_ref_, val, name.str)
 }
 
 fn C.LLVMBuildPtrDiff2(llvm_builder_ref_ types.LLVMBuilderRef, elem_ty types.LLVMTypeRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef
-pub fn llvm_build_ptr_diff2(llvm_builder_ref_ types.LLVMBuilderRef, elem_ty types.LLVMTypeRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildPtrDiff2(llvm_builder_ref_, elem_ty, lhs, rhs, name)
+pub fn llvm_build_ptr_diff2(llvm_builder_ref_ types.LLVMBuilderRef, elem_ty types.LLVMTypeRef, lhs types.LLVMValueRef, rhs types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildPtrDiff2(llvm_builder_ref_, elem_ty, lhs, rhs, name.str)
 }
 
 fn C.LLVMBuildFence(b types.LLVMBuilderRef, ordering LLVMAtomicOrdering, single_thread types.LLVMBool, name &i8) types.LLVMValueRef
-pub fn llvm_build_fence(b types.LLVMBuilderRef, ordering LLVMAtomicOrdering, single_thread types.LLVMBool, name &i8) types.LLVMValueRef {
-	return C.LLVMBuildFence(b, ordering, single_thread, name)
+pub fn llvm_build_fence(b types.LLVMBuilderRef, ordering LLVMAtomicOrdering, single_thread types.LLVMBool, name string) types.LLVMValueRef {
+	return C.LLVMBuildFence(b, ordering, single_thread, name.str)
 }
 
 fn C.LLVMBuildAtomicRMW(b types.LLVMBuilderRef, op LLVMAtomicRMWBinOp, ptr types.LLVMValueRef, val types.LLVMValueRef, ordering LLVMAtomicOrdering, single_thread types.LLVMBool) types.LLVMValueRef
@@ -3327,9 +3327,9 @@ pub fn llvm_create_memory_buffer_with_memory_range(input_data &i8, input_data_le
 }
 
 fn C.LLVMCreateMemoryBufferWithMemoryRangeCopy(input_data &i8, input_data_length usize, buffer_name &i8) types.LLVMMemoryBufferRef
-pub fn llvm_create_memory_buffer_with_memory_range_copy(input_data &i8, input_data_length usize, buffer_name &i8) types.LLVMMemoryBufferRef {
+pub fn llvm_create_memory_buffer_with_memory_range_copy(input_data &i8, input_data_length usize, buffer_name string) types.LLVMMemoryBufferRef {
 	return C.LLVMCreateMemoryBufferWithMemoryRangeCopy(input_data, input_data_length,
-		buffer_name)
+		buffer_name.str)
 }
 
 fn C.LLVMGetBufferStart(mem_buf types.LLVMMemoryBufferRef) &i8
