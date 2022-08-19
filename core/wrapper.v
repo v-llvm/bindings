@@ -929,8 +929,8 @@ pub fn llvm_struct_type(element_types &types.LLVMTypeRef, element_count u32, pac
 }
 
 fn C.LLVMStructCreateNamed(c types.LLVMContextRef, name &i8) types.LLVMTypeRef
-pub fn llvm_struct_create_named(c types.LLVMContextRef, name &i8) types.LLVMTypeRef {
-	return C.LLVMStructCreateNamed(c, name)
+pub fn llvm_struct_create_named(c types.LLVMContextRef, name string) types.LLVMTypeRef {
+	return C.LLVMStructCreateNamed(c, name.str)
 }
 
 fn C.LLVMGetStructName(ty types.LLVMTypeRef) &i8
