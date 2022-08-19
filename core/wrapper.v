@@ -1228,14 +1228,9 @@ pub fn llvm_const_int_of_arbitrary_precision(int_ty types.LLVMTypeRef, num_words
 	return C.LLVMConstIntOfArbitraryPrecision(int_ty, num_words, words)
 }
 
-fn C.LLVMConstIntOfString(int_ty types.LLVMTypeRef, text &i8, radix u8) types.LLVMValueRef
-pub fn llvm_const_int_of_string(int_ty types.LLVMTypeRef, text &i8, radix u8) types.LLVMValueRef {
-	return C.LLVMConstIntOfString(int_ty, text, radix)
-}
-
 fn C.LLVMConstIntOfStringAndSize(int_ty types.LLVMTypeRef, text &i8, s_len u32, radix u8) types.LLVMValueRef
-pub fn llvm_const_int_of_string_and_size(int_ty types.LLVMTypeRef, text &i8, s_len u32, radix u8) types.LLVMValueRef {
-	return C.LLVMConstIntOfStringAndSize(int_ty, text, s_len, radix)
+pub fn llvm_const_int_of_string(int_ty types.LLVMTypeRef, text string, radix u8) types.LLVMValueRef {
+	return C.LLVMConstIntOfStringAndSize(int_ty, text.str, text.len, radix)
 }
 
 fn C.LLVMConstReal(real_ty types.LLVMTypeRef, n f64) types.LLVMValueRef
@@ -1243,14 +1238,9 @@ pub fn llvm_const_real(real_ty types.LLVMTypeRef, n f64) types.LLVMValueRef {
 	return C.LLVMConstReal(real_ty, n)
 }
 
-fn C.LLVMConstRealOfString(real_ty types.LLVMTypeRef, text &i8) types.LLVMValueRef
-pub fn llvm_const_real_of_string(real_ty types.LLVMTypeRef, text &i8) types.LLVMValueRef {
-	return C.LLVMConstRealOfString(real_ty, text)
-}
-
 fn C.LLVMConstRealOfStringAndSize(real_ty types.LLVMTypeRef, text &i8, s_len u32) types.LLVMValueRef
-pub fn llvm_const_real_of_string_and_size(real_ty types.LLVMTypeRef, text &i8, s_len u32) types.LLVMValueRef {
-	return C.LLVMConstRealOfStringAndSize(real_ty, text, s_len)
+pub fn llvm_const_real_of_string(real_ty types.LLVMTypeRef, text string) types.LLVMValueRef {
+	return C.LLVMConstRealOfStringAndSize(real_ty, text.str, text.len)
 }
 
 fn C.LLVMConstIntGetZExtValue(constant_val types.LLVMValueRef) i64
