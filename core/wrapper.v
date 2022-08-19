@@ -924,8 +924,8 @@ pub fn llvm_struct_type_in_context(c types.LLVMContextRef, element_types &types.
 }
 
 fn C.LLVMStructType(element_types &types.LLVMTypeRef, element_count u32, packed types.LLVMBool) types.LLVMTypeRef
-pub fn llvm_struct_type(element_types &types.LLVMTypeRef, element_count u32, packed types.LLVMBool) types.LLVMTypeRef {
-	return C.LLVMStructType(element_types, element_count, packed)
+pub fn llvm_struct_type(element_types []types.LLVMTypeRef, packed bool) types.LLVMTypeRef {
+	return C.LLVMStructType(element_types.data, element_types.len, types.LLVMBool(packed))
 }
 
 fn C.LLVMStructCreateNamed(c types.LLVMContextRef, name &i8) types.LLVMTypeRef
@@ -939,8 +939,8 @@ pub fn llvm_get_struct_name(ty types.LLVMTypeRef) string {
 }
 
 fn C.LLVMStructSetBody(struct_ty types.LLVMTypeRef, element_types &types.LLVMTypeRef, element_count u32, packed types.LLVMBool)
-pub fn llvm_struct_set_body(struct_ty types.LLVMTypeRef, element_types &types.LLVMTypeRef, element_count u32, packed types.LLVMBool) {
-	C.LLVMStructSetBody(struct_ty, element_types, element_count, packed)
+pub fn llvm_struct_set_body(struct_ty types.LLVMTypeRef, element_types []types.LLVMTypeRef, packed bool) {
+	C.LLVMStructSetBody(struct_ty, element_types.data, element_types.len, types.LLVMBool(packed))
 }
 
 fn C.LLVMCountStructElementTypes(struct_ty types.LLVMTypeRef) u32
