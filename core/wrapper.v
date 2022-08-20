@@ -1209,8 +1209,8 @@ pub fn llvm_get_poison(ty types.LLVMTypeRef) types.LLVMValueRef {
 }
 
 fn C.LLVMIsNull(val types.LLVMValueRef) types.LLVMBool
-pub fn llvm_is_null(val types.LLVMValueRef) types.LLVMBool {
-	return C.LLVMIsNull(val)
+pub fn llvm_is_null(val types.LLVMValueRef) bool {
+	return C.LLVMIsNull(val) != 0
 }
 
 fn C.LLVMConstPointerNull(ty types.LLVMTypeRef) types.LLVMValueRef
