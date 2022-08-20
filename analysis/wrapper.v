@@ -18,13 +18,13 @@ pub enum LLVMVerifierFailureAction {
 }
 
 fn C.LLVMVerifyModule(m types.LLVMModuleRef, action LLVMVerifierFailureAction, out_message &&u8) types.LLVMBool
-pub fn llvm_verify_module(m types.LLVMModuleRef, action LLVMVerifierFailureAction, out_message &&u8) types.LLVMBool {
-	return C.LLVMVerifyModule(m, action, out_message)
+pub fn llvm_verify_module(m types.LLVMModuleRef, action LLVMVerifierFailureAction, out_message &&u8) bool {
+	return C.LLVMVerifyModule(m, action, out_message) != 0
 }
 
 fn C.LLVMVerifyFunction(fn_ types.LLVMValueRef, action LLVMVerifierFailureAction) types.LLVMBool
 pub fn llvm_verify_function(fn_ types.LLVMValueRef, action LLVMVerifierFailureAction) bool {
-	return C.LLVMVerifyFunction(fn_, action) == 0
+	return C.LLVMVerifyFunction(fn_, action) != 0
 }
 
 fn C.LLVMViewFunctionCFG(fn_ types.LLVMValueRef)
