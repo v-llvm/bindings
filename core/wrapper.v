@@ -1259,18 +1259,18 @@ pub fn llvm_const_real_get_double(constant_val types.LLVMValueRef, loses_info &t
 }
 
 fn C.LLVMConstStringInContext(c types.LLVMContextRef, str &i8, length u32, dont_null_terminate types.LLVMBool) types.LLVMValueRef
-pub fn llvm_const_string_in_context(c types.LLVMContextRef, str &i8, length u32, dont_null_terminate types.LLVMBool) types.LLVMValueRef {
-	return C.LLVMConstStringInContext(c, str, length, dont_null_terminate)
+pub fn llvm_const_string_in_context(c types.LLVMContextRef, str string, dont_null_terminate bool) types.LLVMValueRef {
+	return C.LLVMConstStringInContext(c, str.str, str.len, types.LLVMBool(dont_null_terminate))
 }
 
 fn C.LLVMConstString(str &i8, length u32, dont_null_terminate types.LLVMBool) types.LLVMValueRef
-pub fn llvm_const_string(str &i8, length u32, dont_null_terminate types.LLVMBool) types.LLVMValueRef {
-	return C.LLVMConstString(str, length, dont_null_terminate)
+pub fn llvm_const_string(str string, dont_null_terminate types.LLVMBool) types.LLVMValueRef {
+	return C.LLVMConstString(str.str, str.len, dont_null_terminate)
 }
 
 fn C.LLVMIsConstantString(c types.LLVMValueRef) types.LLVMBool
-pub fn llvm_is_constant_string(c types.LLVMValueRef) types.LLVMBool {
-	return C.LLVMIsConstantString(c)
+pub fn llvm_is_constant_string(c types.LLVMValueRef) bool {
+	return C.LLVMIsConstantString(c) != 0
 }
 
 fn C.LLVMGetAsString(c types.LLVMValueRef, length &usize) &i8
