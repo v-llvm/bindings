@@ -23,8 +23,8 @@ pub fn llvm_verify_module(m types.LLVMModuleRef, action LLVMVerifierFailureActio
 }
 
 fn C.LLVMVerifyFunction(fn_ types.LLVMValueRef, action LLVMVerifierFailureAction) types.LLVMBool
-pub fn llvm_verify_function(fn_ types.LLVMValueRef, action LLVMVerifierFailureAction) types.LLVMBool {
-	return C.LLVMVerifyFunction(fn_, action)
+pub fn llvm_verify_function(fn_ types.LLVMValueRef, action LLVMVerifierFailureAction) bool {
+	return C.LLVMVerifyFunction(fn_, action) == 0
 }
 
 fn C.LLVMViewFunctionCFG(fn_ types.LLVMValueRef)
