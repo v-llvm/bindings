@@ -17,7 +17,7 @@ This project is a collection of bindings to [the llvm-c interface](https://llvm.
 This is a list of [the llvm-c modules](https://llvm.org/doxygen/group__LLVMC.html#details) that have usable V programming language bindings.
 
 * [x] [Types](https://llvm.org/doxygen/group__LLVMCSupportTypes.html)
-* [ ] [Analysis](https://llvm.org/doxygen/group__LLVMCAnalysis.html)
+* [x] [Analysis](https://llvm.org/doxygen/group__LLVMCAnalysis.html)
 * [ ] [Bit Reader](https://llvm.org/doxygen/group__LLVMCBitReader.html)
 * [ ] [Bit Writer](https://llvm.org/doxygen/group__LLVMCBitWriter.html)
 * [ ] [Transforms](https://llvm.org/doxygen/group__LLVMCTransforms.html)
