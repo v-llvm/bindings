@@ -1279,13 +1279,13 @@ pub fn llvm_get_as_string(c types.LLVMValueRef, length &usize) string {
 }
 
 fn C.LLVMConstStructInContext(c types.LLVMContextRef, constant_vals &types.LLVMValueRef, count u32, packed types.LLVMBool) types.LLVMValueRef
-pub fn llvm_const_struct_in_context(c types.LLVMContextRef, constant_vals &types.LLVMValueRef, count u32, packed types.LLVMBool) types.LLVMValueRef {
-	return C.LLVMConstStructInContext(c, constant_vals, count, packed)
+pub fn llvm_const_struct_in_context(c types.LLVMContextRef, constant_vals []types.LLVMValueRef, packed types.LLVMBool) types.LLVMValueRef {
+	return C.LLVMConstStructInContext(c, constant_vals.data, constant_vals.len, packed)
 }
 
 fn C.LLVMConstStruct(constant_vals &types.LLVMValueRef, count u32, packed types.LLVMBool) types.LLVMValueRef
-pub fn llvm_const_struct(constant_vals &types.LLVMValueRef, count u32, packed types.LLVMBool) types.LLVMValueRef {
-	return C.LLVMConstStruct(constant_vals, count, packed)
+pub fn llvm_const_struct(constant_vals []types.LLVMValueRef, packed types.LLVMBool) types.LLVMValueRef {
+	return C.LLVMConstStruct(constant_vals.data, constant_vals.len, packed)
 }
 
 fn C.LLVMConstArray(element_ty types.LLVMTypeRef, constant_vals &types.LLVMValueRef, length u32) types.LLVMValueRef
@@ -2990,17 +2990,17 @@ pub fn llvm_build_store(llvm_builder_ref_ types.LLVMBuilderRef, val types.LLVMVa
 }
 
 fn C.LLVMBuildGEP2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, indices &types.LLVMValueRef, num_indices u32, name &i8) types.LLVMValueRef
-pub fn llvm_buildge_p2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, indices &types.LLVMValueRef, num_indices u32, name string) types.LLVMValueRef {
-	return C.LLVMBuildGEP2(b, ty, pointer, indices, num_indices, name.str)
+pub fn llvm_build_gep2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, indices []types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildGEP2(b, ty, pointer, indices.data, indices.len, name.str)
 }
 
 fn C.LLVMBuildInBoundsGEP2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, indices &types.LLVMValueRef, num_indices u32, name &i8) types.LLVMValueRef
-pub fn llvm_build_in_boundsge_p2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, indices &types.LLVMValueRef, num_indices u32, name string) types.LLVMValueRef {
-	return C.LLVMBuildInBoundsGEP2(b, ty, pointer, indices, num_indices, name.str)
+pub fn llvm_build_in_bounds_gep2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, indices []types.LLVMValueRef, name string) types.LLVMValueRef {
+	return C.LLVMBuildInBoundsGEP2(b, ty, pointer, indices.data, indices.len, name.str)
 }
 
 fn C.LLVMBuildStructGEP2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, idx u32, name &i8) types.LLVMValueRef
-pub fn llvm_build_structge_p2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, idx u32, name string) types.LLVMValueRef {
+pub fn llvm_build_struct_gep2(b types.LLVMBuilderRef, ty types.LLVMTypeRef, pointer types.LLVMValueRef, idx u32, name string) types.LLVMValueRef {
 	return C.LLVMBuildStructGEP2(b, ty, pointer, idx, name.str)
 }
 
