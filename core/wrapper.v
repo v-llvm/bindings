@@ -1219,8 +1219,8 @@ pub fn llvm_const_pointer_null(ty types.LLVMTypeRef) types.LLVMValueRef {
 }
 
 fn C.LLVMConstInt(int_ty types.LLVMTypeRef, n i64, sign_extend types.LLVMBool) types.LLVMValueRef
-pub fn llvm_const_int(int_ty types.LLVMTypeRef, n i64, sign_extend types.LLVMBool) types.LLVMValueRef {
-	return C.LLVMConstInt(int_ty, n, sign_extend)
+pub fn llvm_const_int(int_ty types.LLVMTypeRef, n i64, sign_extend bool) types.LLVMValueRef {
+	return C.LLVMConstInt(int_ty, n, types.LLVMBool(sign_extend))
 }
 
 fn C.LLVMConstIntOfArbitraryPrecision(int_ty types.LLVMTypeRef, num_words u32, words &u64) types.LLVMValueRef
